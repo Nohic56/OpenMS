@@ -57,6 +57,7 @@ SemanticValidator
 SequenceCoverageCalculator
 SimpleSearchEngine
 SiriusAdapter
+SLIMExport
 SpecLibCreator
 SpectraSTSearchAdapter
 SvmTheoreticalSpectrumGeneratorTrainer

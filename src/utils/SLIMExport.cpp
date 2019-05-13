@@ -145,8 +145,11 @@ protected:
 		if(feature.getMetaValue("model_status") == "0 (valid)")
 		{
 			output << feature.getRT() << feature.getMZ();
-			for (const auto& pep_id : feature.getPeptideIdentifications()) //Iterate throught PeptideId not executed if empty (because size is 0)
+			//~ for (const auto& pep_id : feature.getPeptideIdentifications()) //Iterate throught PeptideId not executed if empty (because size is 0)
+			//~ {
+			if (!feature.getPeptideIdentifications().empty())
 			{
+				const auto& pep_id : feature.getPeptideIdentifications()[0];
 				if (!pep_id.getHits().empty())
 				{
 					const PeptideHit& pep_Hit = pep_id.getHits()[0];
@@ -196,6 +199,7 @@ protected:
 					    //print correct header
 					    output << isotope.getMetaValue("model_Gauss_sigma");
 				    }
+				    output << isotope.getMetaValue("model_area");
 				    double sum_y = 0.0;
 				    for (const ConvexHull2D& point : isotope.getConvexHulls()) // loop over the YX pairs in the Isotopes
 				    {

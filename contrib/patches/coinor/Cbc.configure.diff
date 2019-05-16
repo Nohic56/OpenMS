@@ -1,0 +1,20 @@
+--- Cbc/configure	2017-10-20 14:33:11.865533487 -0400
++++ Cbc/configure	2017-10-20 14:37:52.346295509 -0400
+@@ -2891,7 +2891,7 @@
+           *-darwin*)
+             ;;
+           *)
+-            coin_warn_cflags="-pedantic-errors $coin_warn_cflags"
++            coin_warn_cflags=" $coin_warn_cflags"
+             ;;
+         esac
+     esac
+@@ -3760,7 +3760,7 @@
+           *-darwin*)
+             ;;
+           *)
+-            coin_warn_cxxflags="-pedantic-errors $coin_warn_cxxflags"
++            coin_warn_cxxflags=" $coin_warn_cxxflags"
+             ;;
+         esac
+     esac

@@ -1,0 +1,27 @@
+## Copyright Stephan Aiche 2013.
+## Distributed under the Boost Software License, Version 1.0.
+## See: http://www.boost.org/LICENSE_1_0.txt)
+
+project("WildMagic5")
+cmake_minimum_required(VERSION 2.8)
+
+include(CheckCXXCompilerFlag)
+if (NOT WIN32) # we only want fPIC on non-windows systems (fPIC is implicitly true there)
+  CHECK_CXX_COMPILER_FLAG("-fPIC" WITH_FPIC)
+  if (WITH_FPIC)
+    add_definitions(-fPIC)
+  endif()
+endif()
+
+if(MSVC)
+  set(CMAKE_DEBUG_POSTFIX "d")
+endif()
+
+## define custom include path
+set(WM_INCLUDE_INSTALL "include/WildMagic")
+
+## core
+add_subdirectory(LibCore)
+
+## mathematics
+add_subdirectory(LibMathematics)

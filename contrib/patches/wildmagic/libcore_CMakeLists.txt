@@ -1,0 +1,181 @@
+## Copyright Stephan Aiche 2013.
+## Distributed under the Boost Software License, Version 1.0.
+## See: http://www.boost.org/LICENSE_1_0.txt)
+
+project("WmLibCore")
+cmake_minimum_required(VERSION 2.8)
+
+################################################################################
+## Core
+set(files_h
+  Wm5Core.h
+  Wm5CoreLIB.h
+  Wm5CorePCH.h
+)
+
+set(files_cpp
+  Wm5CorePCH.cpp
+)
+
+################################################################################
+## Assert
+set(assert_files_cpp
+  Assert/Wm5Assert.cpp
+)
+
+set(assert_files_h
+  Assert/Wm5Assert.h
+)
+
+################################################################################
+## DataTypes
+set(datatypes_h
+  DataTypes/Wm5MinHeap.h
+  DataTypes/Wm5MinHeap.inl
+  DataTypes/Wm5Table.h
+  DataTypes/Wm5Table.inl
+  DataTypes/Wm5Tuple.h
+  DataTypes/Wm5Tuple.inl
+)
+
+set(datatypes_cpp
+)
+
+################################################################################
+## InputOutput
+set(input_output_h
+  InputOutput/Wm5BufferIO.h
+  InputOutput/Wm5BufferIO.inl
+  InputOutput/Wm5Endian.h
+  InputOutput/Wm5Environment.h
+  InputOutput/Wm5FileIO.h
+  InputOutput/Wm5FileIO.inl
+)
+
+set(input_output_cpp
+  InputOutput/Wm5BufferIO.cpp
+  InputOutput/Wm5Endian.cpp
+  InputOutput/Wm5Environment.cpp
+  InputOutput/Wm5FileIO.cpp
+)
+
+################################################################################
+## Memory
+set(memory_h
+  Memory/Wm5Memory.h
+  Memory/Wm5Memory.inl
+  Memory/Wm5SmartPointer.h
+  Memory/Wm5SmartPointer.inl
+)
+
+set(memory_cpp
+  Memory/Wm5Memory.cpp
+  Memory/Wm5SmartPointer.cpp
+)
+
+################################################################################
+## ObjectSystems
+set(object_system_h
+  ObjectSystems/Wm5InitTerm.h
+  ObjectSystems/Wm5InStream.h
+  ObjectSystems/Wm5InStream.inl
+  ObjectSystems/Wm5Names.h
+  ObjectSystems/Wm5Object.h
+  ObjectSystems/Wm5Object.inl
+  ObjectSystems/Wm5OutStream.h
+  ObjectSystems/Wm5OutStream.inl
+  ObjectSystems/Wm5Rtti.h
+  ObjectSystems/Wm5Rtti.inl
+  ObjectSystems/Wm5Stream.h
+)
+
+set(object_system_cpp
+  ObjectSystems/Wm5InitTerm.cpp
+  ObjectSystems/Wm5InStream.cpp
+  ObjectSystems/Wm5Object.cpp
+  ObjectSystems/Wm5OutStream.cpp
+  ObjectSystems/Wm5Rtti.cpp
+  ObjectSystems/Wm5Stream.cpp
+)
+
+################################################################################
+## Threading
+set(threading_h
+  Threading/Wm5Mutex.h
+  Threading/Wm5MutexType.h
+  Threading/Wm5ScopedCS.h
+  Threading/Wm5Thread.h
+  Threading/Wm5ThreadType.h
+)
+
+set(threading_cpp
+  Threading/Wm5Mutex.cpp
+  Threading/Wm5ScopedCS.cpp
+  Threading/Wm5Thread.cpp
+)
+
+################################################################################
+## Time
+set(time_h
+  Time/Wm5Time.h
+)
+
+set(time_cpp
+  Time/Wm5Time.cpp
+)
+
+################################################################################
+## Handle Include Directories
+set(WM5_CORE_INCLUDE_DIRECTORIES ${PROJECT_SOURCE_DIR}
+                                 ${PROJECT_SOURCE_DIR}/Assert
+                                 ${PROJECT_SOURCE_DIR}/DataTypes
+                                 ${PROJECT_SOURCE_DIR}/InputOutput
+                                 ${PROJECT_SOURCE_DIR}/Memory
+                                 ${PROJECT_SOURCE_DIR}/ObjectSystems
+                                 ${PROJECT_SOURCE_DIR}/Threading
+                                 ${PROJECT_SOURCE_DIR}/Time
+    CACHE INTERNAL "Wm5Core include directories" FORCE)
+
+# export compile definitions
+if(WIN32 AND BUILD_SHARED_LIBS)
+  set(WM5_CORE_DEFINITIONS "WM5_CORE_DLL_IMPORT"
+      CACHE INTERNAL "Wm5Core definitions" FORCE)
+else()
+  set(WM5_CORE_DEFINITIONS ""
+      CACHE INTERNAL "Wm5Core definitions" FORCE)
+endif()
+
+include_directories(${WM5_CORE_INCLUDE_DIRECTORIES})
+
+################################################################################
+## add Wm5Core library
+add_library(Wm5Core ${files_cpp}
+                    ${assert_files_cpp}
+                    ${datatypes_cpp}
+                    ${input_output_cpp}
+                    ${memory_cpp}
+                    ${object_system_cpp}
+                    ${threading_cpp}
+                    ${time_cpp})
+
+# request dll export if we compile on windows
+if(WIN32 AND BUILD_SHARED_LIBS)
+  set_target_properties(Wm5Core PROPERTIES DEFINE_SYMBOL "WM5_CORE_DLL_EXPORT" )
+endif()
+
+# install the lib
+install(TARGETS Wm5Core
+    RUNTIME DESTINATION bin
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib )
+
+# install the headers
+install(FILES ${files_h}
+              ${assert_files_h}
+              ${datatypes_h}
+              ${input_output_h}
+              ${memory_h}
+              ${object_system_h}
+              ${threading_h}
+              ${time_h}
+        DESTINATION ${WM_INCLUDE_INSTALL})

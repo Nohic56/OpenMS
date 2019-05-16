@@ -1,0 +1,50 @@
+The OpenMS contrib package contains third party libraries needed by OpenMS.
+The libraries and their respective license files are listed below.
+
+Boost
+	- URL: http://www.boost.org/
+	- License available at http://www.boost.org/more/license_info.html
+			  
+BZ2Lib
+	- URL: http://www.bzip.org/
+	- License.bzip2.txt 
+	
+COIN-OR
+	- URL: https://www.coin-or.org/
+	- License available at https://www.eclipse.org/legal/epl-v10.html
+
+Eigen
+	- URL: http://eigen.tuxfamily.org
+	- License available at https://www.mozilla.org/en-US/MPL/2.0/
+
+GLPK
+	- URL: http://www.gnu.org/s/glpk/
+	- License.gpl-3.0.txt
+
+Kiss FFT
+	- URL: http://kissfft.sourceforge.net/
+	- License.bsd.kissfft.txt
+	
+libSVM
+	- URL: http://www.csie.ntu.edu.tw/~cjlin/libsvm/
+	- License.libSVM.txt
+
+SEQAN
+	- URL: https://www.seqan.de/
+	- License.bsd.seqan.txt
+
+SQLite
+	- URL: https://sqlite.org/copyright.html
+	- "All of the code and documentation in SQLite has been dedicated to the public domain by the authors."
+
+Wild Magic
+	- URL: https://www.geometrictools.com/Downloads/Downloads.html
+	- License available at https://www.geometrictools.com/License/Boost/LICENSE_1_0.txt
+	
+Xerces-C
+	- URL: http://xerces.apache.org/xerces-c/index.html
+	- License available at http://www.apache.org/licenses/LICENSE-2.0.html
+	
+ZLib
+	- URL: http://www.zlib.net
+	- License available at http://www.zlib.net/zlib_license.html

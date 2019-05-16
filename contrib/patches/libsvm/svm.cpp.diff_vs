@@ -1,0 +1,109 @@
+--- svm.cpp.orig	2013-03-31 09:06:49.000000000 +0200
++++ svm.cpp	2013-07-07 14:09:10.000000000 +0200
+@@ -1,12 +1,13 @@
+-#include <math.h>
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <ctype.h>
+-#include <float.h>
+-#include <string.h>
+-#include <stdarg.h>
+-#include <limits.h>
+-#include <locale.h>
++#include <cmath>
++#include <limits>
++#include <cstdio>
++#include <cstdlib>
++//#include <type>
++//#include <float.h>
++#include <string>
++#include <cstdarg>
++#include <clocale>
++#include <string>
+ #include "svm.h"
+ int libsvm_version = LIBSVM_VERSION;
+ typedef float Qfloat;
+@@ -34,7 +35,7 @@
+ 	}
+ 	return ret;
+ }
+-#define INF HUGE_VAL
++#define INF (std::numeric_limits<double>::max())
+ #define TAU 1e-12
+ #define Malloc(type,n) (type *)malloc((n)*sizeof(type))
+ 
+@@ -2643,8 +2644,8 @@
+ 	FILE *fp = fopen(model_file_name,"w");
+ 	if(fp==NULL) return -1;
+ 
+-	char *old_locale = strdup(setlocale(LC_ALL, NULL));
+-	setlocale(LC_ALL, "C");
++	std::string old_locale(std::setlocale(LC_ALL, NULL));
++	std::setlocale(LC_ALL, "C");
+ 
+ 	const svm_parameter& param = model->param;
+ 
+@@ -2725,8 +2726,7 @@
+ 		fprintf(fp, "\n");
+ 	}
+ 
+-	setlocale(LC_ALL, old_locale);
+-	free(old_locale);
++  std::setlocale(LC_ALL, old_locale.c_str());
+ 
+ 	if (ferror(fp) != 0 || fclose(fp) != 0) return -1;
+ 	else return 0;
+@@ -2758,8 +2758,8 @@
+ 	FILE *fp = fopen(model_file_name,"rb");
+ 	if(fp==NULL) return NULL;
+ 
+-	char *old_locale = strdup(setlocale(LC_ALL, NULL));
+-	setlocale(LC_ALL, "C");
++	std::string old_locale(std::setlocale(LC_ALL, NULL));
++	std::setlocale(LC_ALL, "C");
+ 
+ 	// read parameters
+ 
+@@ -2793,8 +2793,7 @@
+ 			{
+ 				fprintf(stderr,"unknown svm type.\n");
+ 				
+-				setlocale(LC_ALL, old_locale);
+-				free(old_locale);
++        std::setlocale(LC_ALL, old_locale.c_str());
+ 				free(model->rho);
+ 				free(model->label);
+ 				free(model->nSV);
+@@ -2818,8 +2817,8 @@
+ 			{
+ 				fprintf(stderr,"unknown kernel function.\n");
+ 				
+-				setlocale(LC_ALL, old_locale);
+-				free(old_locale);
++        std::setlocale(LC_ALL, old_locale.c_str());
++				// free(old_locale);
+ 				free(model->rho);
+ 				free(model->label);
+ 				free(model->nSV);
+@@ -2885,8 +2884,8 @@
+ 		{
+ 			fprintf(stderr,"unknown text in model file: [%s]\n",cmd);
+ 			
+-			setlocale(LC_ALL, old_locale);
+-			free(old_locale);
++      std::setlocale(LC_ALL, old_locale.c_str());
++			//free(old_locale);
+ 			free(model->rho);
+ 			free(model->label);
+ 			free(model->nSV);
+@@ -2959,8 +2958,8 @@
+ 	}
+ 	free(line);
+ 
+-	setlocale(LC_ALL, old_locale);
+-	free(old_locale);
++  std::setlocale(LC_ALL, old_locale.c_str());
++	//free(old_locale);
+ 
+ 	if (ferror(fp) != 0 || fclose(fp) != 0)
+ 		return NULL;

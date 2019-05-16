@@ -1,0 +1,11 @@
+--- ./LibCore/Assert/Wm5Assert.cpp
++++ ./LibCore/Assert/Wm5Assert.cpp
+@@ -9,7 +9,7 @@
+ #include "Wm5CorePCH.h"
+ #include "Wm5Assert.h"
+ 
+-#ifdef WM5_USE_ASSERT
++#if 0
+ 
+ #ifdef WM5_USE_ASSERT_WRITE_TO_OUTPUT_WINDOW
+ #include <windows.h>

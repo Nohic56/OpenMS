@@ -1,0 +1,20 @@
+--- Cgl/configure	2017-10-20 14:45:20.498645591 -0400
++++ Cgl/configure	2017-10-20 14:45:30.710652791 -0400
+@@ -2857,7 +2857,7 @@
+           *-darwin*)
+             ;;
+           *)
+-            coin_warn_cflags="-pedantic-errors $coin_warn_cflags"
++            coin_warn_cflags=" $coin_warn_cflags"
+             ;;
+         esac
+     esac
+@@ -3726,7 +3726,7 @@
+           *-darwin*)
+             ;;
+           *)
+-            coin_warn_cxxflags="-pedantic-errors $coin_warn_cxxflags"
++            coin_warn_cxxflags=" $coin_warn_cxxflags"
+             ;;
+         esac
+     esac

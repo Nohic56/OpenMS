@@ -1,0 +1,20 @@
+--- CoinUtils/configure	2017-10-13 17:30:08.291283980 -0400
++++ CoinUtils/configure	2017-10-13 17:29:48.259229890 -0400
+@@ -2883,7 +2883,7 @@
+           *-darwin*)
+             ;;
+           *)
+-            coin_warn_cflags="-pedantic-errors $coin_warn_cflags"
++            coin_warn_cflags=" $coin_warn_cflags"
+             ;;
+         esac
+     esac
+@@ -3752,7 +3752,7 @@
+           *-darwin*)
+             ;;
+           *)
+-            coin_warn_cxxflags="-pedantic-errors $coin_warn_cxxflags"
++            coin_warn_cxxflags=" $coin_warn_cxxflags"
+             ;;
+         esac
+     esac

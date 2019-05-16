@@ -1,0 +1,15 @@
+--- CoinUtils/src/CoinTypes.hpp
++++ CoinUtils/src/CoinTypes.hpp
+@@ -7,7 +7,11 @@
+ #include "CoinUtilsConfig.h"
+
+ #ifdef HAVE_CINTTYPES
+-# include <cinttypes>
++# ifdef _LIBCPP_VERSION
++#  include <cinttypes>
++# else
++#  include <tr1/cinttypes>
++# endif
+ #else
+ # ifdef HAVE_INTTYPES_H
+ #  include <inttypes.h>

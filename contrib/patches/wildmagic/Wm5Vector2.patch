@@ -1,0 +1,10 @@
+--- ./LibMathematics/Algebra/Wm5Vector2.inl
++++ ./LibMathematics/Algebra/Wm5Vector2.inl
+@@ -15,6 +15,7 @@
+ //----------------------------------------------------------------------------
+ template <typename Real>
+ Vector2<Real>::Vector2 (const Vector2& vec)
++  : Tuple<2,Real>(vec)
+ {
+     mTuple[0] = vec.mTuple[0];
+     mTuple[1] = vec.mTuple[1];

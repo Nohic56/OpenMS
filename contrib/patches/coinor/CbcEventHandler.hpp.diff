@@ -1,0 +1,10 @@
+--- Cbc/src/CbcEventHandler.hpp	2007-08-10 18:18:20.000000000 +0200
++++ Cbc/src/CbcEventHandler.hpp	2011-09-27 15:24:49.000000000 +0200
+@@ -43,6 +43,7 @@
+ */
+ 
+ #include <map>
++#include <cstddef>
+ 
+ /* May well already be declared, but can't hurt. */
+ 

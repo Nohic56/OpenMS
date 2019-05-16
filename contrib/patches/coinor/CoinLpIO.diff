@@ -1,0 +1,38 @@
+--- CoinUtils/src/CoinLpIO.cpp	Sa Feb 20 23:32:12 2010
++++ CoinUtils/src/CoinLpIO.cpp	Sa Feb 20 23:31:24 2010
+@@ -2004,7 +2004,7 @@
+     const char *thisName = names[i];
+     int length = strlen(thisName);
+     
+-    ipos = hash(thisName, maxhash, length);
++	ipos = ::hash(thisName, maxhash, length);
+     if (hashThis[ipos].index == -1) {
+       hashThis[ipos].index = i; // will be changed below
+     }
+@@ -2025,7 +2025,7 @@
+     const char *thisName = names[i];
+     int length = strlen(thisName);
+     
+-    ipos = hash(thisName, maxhash, length);
++	ipos = ::hash(thisName, maxhash, length);
+     
+     while (1) {
+       COINColumnIndex j1 = hashThis[ipos].index;
+@@ -2139,7 +2139,7 @@
+ 
+   int length = strlen (name);
+ 
+-  ipos = hash (name, maxhash, length);
++  ipos = ::hash (name, maxhash, length);
+   while (1) {
+     COINColumnIndex j1 = hashThis[ipos].index;
+ 
+@@ -2181,7 +2181,7 @@
+   int iput = -1;
+   int length = strlen (thisName);
+ 
+-  int ipos = hash (thisName, maxhash, length);
++  int ipos = ::hash (thisName, maxhash, length);
+ 
+   while (1) {
+     COINColumnIndex j1 = hashThis[ipos].index;

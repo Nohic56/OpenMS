@@ -1,0 +1,11 @@
+--- ./LibCore/Wm5CoreLIB.h
++++ ./LibCore/Wm5CoreLIB.h
+@@ -98,7 +98,7 @@
+ // Macintosh OS X platform
+ //----------------------------------------------------------------------------
+ #if defined(__APPLE__)
+-
++#include <stdint.h>
+ #if defined(__BIG_ENDIAN__)
+ #define WM5_BIG_ENDIAN
+ #else

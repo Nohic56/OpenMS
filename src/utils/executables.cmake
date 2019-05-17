@@ -55,6 +55,7 @@ RNPxlSearch
 RTEvaluation
 SemanticValidator
 SequenceCoverageCalculator
+SLIMExport
 SimpleSearchEngine
 SiriusAdapter
 SpecLibCreator
